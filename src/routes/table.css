@@ -1,0 +1,12 @@
+table {
+	margin: auto;
+	border-collapse: collapse;
+	text-align: center;
+	width: max(50vw, 20em);
+	text-align: center;
+}
+
+table td {
+	border: 1px solid #ddd; /* Adds a border to each cell */
+	padding: 8px;
+}
