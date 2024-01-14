@@ -14,17 +14,17 @@
 		</tr>
 		<tr>
 			<td>Top</td>
-			<td>{liveTemps[0]}</td>
+			<td>{Math.round(liveTemps[0]*100)/100}</td>
 			<td>{liveMoistures[0]}</td>
 		</tr>
 		<tr>
 			<td>Middle</td>
-			<td>{liveTemps[1]}</td>
+			<td>{Math.round(liveTemps[1]*100)/100}</td>
 			<td>{liveMoistures[1]}</td>
 		</tr>
 		<tr>
 			<td>Bottom</td>
-			<td>{liveTemps[2]}</td>
+			<td>{Math.round(liveTemps[2]*100)/100}</td>
 			<td>{liveMoistures[2]}</td>
 		</tr>
 	</tbody>
@@ -43,3 +43,4 @@
 		padding: 8px;
 	}
 </style>
+
