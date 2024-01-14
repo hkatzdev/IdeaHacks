@@ -1,58 +1,28 @@
 <script>
+	import { getDatabase, onValue, ref } from 'firebase/database';
 	import DataTable from './DataTable.svelte';
-	import { getApp } from "firebase/app";
-	import { getDatabase, ref, onValue, get, child } from "firebase/database";
-	const app = getApp();
-	const database = getDatabase(app);
-	const TemperatureSensorsLive = ref(database, 'TemperatureSensorsLive');
-	const TemperatureSensorsHistory = ref(database, 'TemperatureSensorsHistory');
-	const MoistureSensorsLive = ref(database, 'MoistureSensorsLive');
-	const MoistureSensorsHistory = ref(database, 'MoistureSensorsHistory');
-	const tempSensor = ref(database, 'sensors');
-	/** @type {number[] | null} */
-	let temp;
-	const tempProm = get(tempSensor).then((snapshot) => {
-		temp = snapshot.val().temperature;
-	});
-	onValue(tempSensor, (snapshot) => {
-		console.log("hi");
-		temp = snapshot.val().temperature;
-	});
-	/** @type {number[] | null} */
-	let tempLive;
-	/** @type {number[][] | null} */
-	let tempHistory;
-	/** @type {number[] | null} */
-	let moistureLive;
-	/** @type {number[][] | null} */
-	let moistureHistory;
-	const tempLiveProm = get(TemperatureSensorsLive).then((snapshot) => {
-		tempLive = snapshot.val();
-	});
-	const tempHistoryProm = get(TemperatureSensorsHistory).then((snapshot) => {
-		tempHistory = snapshot.val();
-	});;
-	const moistureLiveProm = get(MoistureSensorsLive).then((snapshot) => {
-		moistureLive = snapshot.val();
-	});;
-	const moistureHistoryProm = get(MoistureSensorsHistory).then((snapshot) => {
-		moistureHistory = snapshot.val();
-	});;
-	onValue(TemperatureSensorsLive, (snapshot) => {
-		tempLive = snapshot.val();
-	});
-	onValue(TemperatureSensorsHistory, (snapshot) => {
-		tempHistory = snapshot.val();
-	});
-	onValue(MoistureSensorsLive, (snapshot) => {
-		moistureLive = snapshot.val();
-	});
-	onValue(MoistureSensorsHistory, (snapshot) => {
-		moistureHistory = snapshot.val();
+	import Messages from './Messages.svelte';
+	import { onMount } from "svelte";
+	import { getFirebassApp } from "$lib/firebase";
+	/** @type {import('./$types').PageData} */
+	export let data;
+	onMount(() => {
+		const app = getFirebassApp();
+		const database = getDatabase(app);
+		const sensors = ref(database, 'sensors');
+		onValue(sensors, (snapshot) => {
+			data.temp[0] = snapshot.val().temperature1;
+			data.moisture[0] = snapshot.val().moisture1;
+			data.temp[1] = snapshot.val().temperature2;
+			data.moisture[1] = snapshot.val().moisture2;
+			data.temp[2] = snapshot.val().temperature3;
+			data.moisture[2] = snapshot.val().moisture3;
+		});
 	});
 </script>
 
 <svelte:head>
 	<title>Web Page Layout</title>
 </svelte:head>
-<DataTable liveTemps={[temp]} liveMoistures={[]} />
+<DataTable liveTemps={data.temp} liveMoistures={data.moisture} />
+<Messages liveTemps={data.temp} liveMoistures={data.moisture} />
