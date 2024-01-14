@@ -1,4 +1,4 @@
-import { getFirebassApp, getFirebaseInfo } from '$lib/firebase.js';
+import { getFirebaseApp, getFirebaseInfo } from '$lib/firebase.js';
 import {redirect} from "@sveltejs/kit";
 import { GoogleAuthProvider, signInWithCredential } from "firebase/auth";
 /**
@@ -9,7 +9,7 @@ import { GoogleAuthProvider, signInWithCredential } from "firebase/auth";
 export async function POST({request}) {
 
 	// @ts-ignore
-	const app = getFirebassApp();
+	const app = getFirebaseApp();
 	const { auth } = getFirebaseInfo(app);
 	// @ts-ignore
 	const credential = GoogleAuthProvider.credential((await request.formData()).get("credential"));

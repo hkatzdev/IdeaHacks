@@ -1,37 +1,19 @@
-<script>
-	import { onMount } from 'svelte';
-	import MultipleImages from '$lib/MultipleImages.svelte';
-	import { getFirebassApp, getFirebaseInfo, signIntoFirebase } from '$lib//firebase.js';
-	import { redirect } from '@sveltejs/kit';
-	const headerImage = {
-		imageURL: '$static/path-to-your-top-image.jpg',
-		altText: 'Top Image',
-		newLine: true
-	};
-	const gotchiImage = {
-		imageURL: '$static/path-to-your-second-image.jpg',
-		altText: 'Second Image',
-		newLine: true
-	};
-	const images = [headerImage, gotchiImage];
-	const app = getFirebassApp();
-	const {auth} = getFirebaseInfo(app);
-	console.log(auth.currentUser);
-</script>
+
 
 <header>
-	<MultipleImages {images} />
+	<img src="/trash.png" alt="Logo" id="logo" class="automaticResize" />
 </header>		
 <main>
 	<slot />
 </main>
 <footer>
 	<nav>
-		<button>Click Me</button>
+		<button on:click={() => {alert("This project was made by the Pierce Team :)")}}>Who made this?</button>
 	</nav>
 </footer>
 
 <style>
+	@import '$lib/styles/automaticResize';
 	:global(html) {
 		min-width: 100vw;
 		min-height: 100vh;
@@ -64,10 +46,14 @@
 		background-color: #4caf50;
 		color: white;
 		border: none;
-		border-radius: 4px;
+		border-radius: 0.25rem;
 		cursor: pointer;
 	}
 	button:hover {
 		background-color: #45a049; /* Darker shade on hover */
+	}
+	#logo {
+		max-width: 30vw;
+		max-height: 15vh;
 	}
 </style>

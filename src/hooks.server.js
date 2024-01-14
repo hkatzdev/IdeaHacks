@@ -1,4 +1,4 @@
-import { getFirebassApp, getFirebaseInfo } from '$lib/firebase.js';
+import { getFirebaseApp, getFirebaseInfo } from '$lib/firebase.js';
 import { redirect } from '@sveltejs/kit';
 
 
@@ -6,7 +6,7 @@ import { redirect } from '@sveltejs/kit';
 export async function handle({ event, resolve }) {
 	const path = event.url.pathname;
 	if (!path.startsWith("/static/") && !path.startsWith("/login")) {
-		const app = getFirebassApp();
+		const app = getFirebaseApp();
 		const {auth} = getFirebaseInfo(app);
 		if (!auth.currentUser) {
 			redirect(303, "/login");

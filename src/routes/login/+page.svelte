@@ -1,10 +1,10 @@
 <script context="module">
-  import { getFirebassApp, getFirebaseInfo } from '$lib/firebase.js';
+  import { getFirebaseApp, getFirebaseInfo } from '$lib/firebase.js';
   import { GoogleAuthProvider, signInWithCredential } from "firebase/auth";
   /**
    * @param {{ credential: string; }} response
    */
-  const app = getFirebassApp();
+  const app = getFirebaseApp();
   const {auth} = getFirebaseInfo(app);
   /**
 	 * @param {{ credential: string; }} response

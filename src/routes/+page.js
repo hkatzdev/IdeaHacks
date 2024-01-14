@@ -1,9 +1,9 @@
-import { getFirebassApp } from "$lib/firebase";
+import { getFirebaseApp } from "$lib/firebase";
 import { getDatabase, ref, get } from "firebase/database";
 
 /** @type {import('./$types').PageLoad} */
 export async function load() {
-	const app = getFirebassApp();
+	const app = getFirebaseApp();
 	const database = getDatabase(app);
 	const sensors = ref(database, 'sensors');
 	/** @type {number} */

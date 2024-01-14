@@ -3,11 +3,12 @@
 	import DataTable from './DataTable.svelte';
 	import Messages from './Messages.svelte';
 	import { onMount } from "svelte";
-	import { getFirebassApp } from "$lib/firebase";
+	import { getFirebaseApp } from "$lib/firebase";
 	/** @type {import('./$types').PageData} */
 	export let data;
+	let face = "Happy";
 	onMount(() => {
-		const app = getFirebassApp();
+		const app = getFirebaseApp();
 		const database = getDatabase(app);
 		const sensors = ref(database, 'sensors');
 		onValue(sensors, (snapshot) => {
@@ -26,3 +27,4 @@
 </svelte:head>
 <DataTable liveTemps={data.temp} liveMoistures={data.moisture} />
 <Messages liveTemps={data.temp} liveMoistures={data.moisture} />
+
