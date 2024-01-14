@@ -32,13 +32,13 @@
 		tempLive = snapshot.val();
 	});
 	onValue(TemperatureSensorsHistory, (snapshot) => {
-		tempLive = snapshot.val();
+		tempHistory = snapshot.val();
 	});
 	onValue(MoistureSensorsLive, (snapshot) => {
-		tempLive = snapshot.val();
+		moistureLive = snapshot.val();
 	});
 	onValue(MoistureSensorsHistory, (snapshot) => {
-		tempLive = snapshot.val();
+		moistureHistory = snapshot.val();
 	});
 </script>
 
