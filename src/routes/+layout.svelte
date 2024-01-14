@@ -1,20 +1,26 @@
 <script>
-	import CenteredImages from '$lib/MultipleImages.svelte';
+	import { onMount } from 'svelte';
+	import MultipleImages from '$lib/MultipleImages.svelte';
+	import { getFirebassApp, getFirebaseInfo, signIntoFirebase } from '$lib//firebase.js';
+	import { redirect } from '@sveltejs/kit';
 	const headerImage = {
-		imageURL: 'path-to-your-top-image.jpg',
+		imageURL: '$static/path-to-your-top-image.jpg',
 		altText: 'Top Image',
 		newLine: true
 	};
 	const gotchiImage = {
-		imageURL: 'path-to-your-second-image.jpg',
+		imageURL: '$static/path-to-your-second-image.jpg',
 		altText: 'Second Image',
 		newLine: true
 	};
 	const images = [headerImage, gotchiImage];
+	const app = getFirebassApp();
+	const {auth} = getFirebaseInfo(app);
+	console.log(auth.currentUser);
 </script>
 
 <header>
-	<CenteredImages {images} />
+	<MultipleImages {images} />
 </header>		
 <main>
 	<slot />

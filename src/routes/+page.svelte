@@ -8,6 +8,16 @@
 	const TemperatureSensorsHistory = ref(database, 'TemperatureSensorsHistory');
 	const MoistureSensorsLive = ref(database, 'MoistureSensorsLive');
 	const MoistureSensorsHistory = ref(database, 'MoistureSensorsHistory');
+	const tempSensor = ref(database, 'sensors');
+	/** @type {number[] | null} */
+	let temp;
+	const tempProm = get(tempSensor).then((snapshot) => {
+		temp = snapshot.val().temperature;
+	});
+	onValue(tempSensor, (snapshot) => {
+		console.log("hi");
+		temp = snapshot.val().temperature;
+	});
 	/** @type {number[] | null} */
 	let tempLive;
 	/** @type {number[][] | null} */
@@ -45,4 +55,4 @@
 <svelte:head>
 	<title>Web Page Layout</title>
 </svelte:head>
-<DataTable />
+<DataTable liveTemps={[temp]} liveMoistures={[]} />

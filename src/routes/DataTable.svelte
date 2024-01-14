@@ -1,5 +1,10 @@
+<script>
+	/** @type {number[]} */
+	export let liveTemps;
+	/** @type {number[]} */
+	export let liveMoistures;
+</script>
 <table>
-	<!-- Table rows and columns -->
 	<tr>
 		<td></td>
 		<td>Temperature</td>
@@ -7,18 +12,18 @@
 	</tr>
 	<tr>
 		<td>Top</td>
-		<td>Degree C</td>
-		<td>Cell 4</td>
+		<td>{liveTemps[0]}</td>
+		<td>{liveMoistures[0]}</td>
 	</tr>
 	<tr>
 		<td>Middle</td>
-		<td>Degree C</td>
-		<td>Cell 6</td>
+		<td>{liveTemps[1]}</td>
+		<td>{liveMoistures[1]}</td>
 	</tr>
 	<tr>
 		<td>Bottom</td>
-		<td>Degree C</td>
-		<td>Cell 8</td>
+		<td>{liveTemps[2]}</td>
+		<td>{liveMoistures[2]}</td>
 	</tr>
 </table>
 
