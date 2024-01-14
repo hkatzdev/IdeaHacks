@@ -1,14 +1,16 @@
-
-
 <header>
-	<img src="/trash.png" alt="Logo" id="logo" class="automaticResize" />
-</header>		
+	<img src="/Compost.png" alt="Logo" id="logo" class="automaticResize" />
+</header>
 <main>
 	<slot />
 </main>
 <footer>
 	<nav>
-		<button on:click={() => {alert("This project was made by the Pierce Team :)")}}>Who made this?</button>
+		<button
+			on:click={() => {
+				alert('This project was made by the Pierce Team :)');
+			}}>Who made this?</button
+		>
 	</nav>
 </footer>
 
@@ -53,7 +55,7 @@
 		background-color: #45a049; /* Darker shade on hover */
 	}
 	#logo {
-		max-width: 30vw;
-		max-height: 15vh;
+		max-width: 60vw;
+		max-height: 30vh;
 	}
 </style>

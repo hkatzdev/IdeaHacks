@@ -23,7 +23,7 @@
 				`Ouch! The ${SENSOR_LOCATION.get(i)} of your compost bin is too hot!`
 			];
 			if (face === 'Happy') {
-				face = 'Panting';
+				face = 'Hot';
 			} else {
 				face = 'HEEEEEEEEEEELLLLLLLLPPPPPPPPPPPPPPPLZ';
 			}
@@ -33,7 +33,7 @@
 				`Brrr! The ${SENSOR_LOCATION.get(i)} of your compost bin is too cold!`
 			];
 			if (face === 'Happy') {
-				face = 'Freezing';
+				face = 'Cold';
 			} else {
 				face = 'HEEEEEEEEEEELLLLLLLLPPPPPPPPPPPPPPPLZ';
 			}
@@ -47,7 +47,7 @@
 				`The ${SENSOR_LOCATION.get(i)} of your compost bin is sweating! It is too moist.`
 			];
 			if (face === 'Happy') {
-				face = 'Sweating';
+				face = 'Wet';
 			} else {
 				face = 'HEEEEEEEEEEELLLLLLLLPPPPPPPPPPPPPPPLZ';
 			}
@@ -57,7 +57,7 @@
 				`The ${SENSOR_LOCATION.get(i)} of your compost bin is parched! It is too dry.`
 			];
 			if (face === 'Happy') {
-				face = 'ReachingForWater';
+				face = 'Dry';
 			} else {
 				face = 'HEEEEEEEEEEELLLLLLLLPPPPPPPPPPPPPPPLZ';
 			}
@@ -65,13 +65,14 @@
 	}
 </script>
 
+
+<br />&nbsp; <br />&nbsp;
+<img src="/{face}.jpeg" alt="gotchi" id="face" class="automaticResize" />
 <br />
 {#each messages as message}
 	<p>{message}</p>
 	<br />
 {/each}
-<br />&nbsp; <br />&nbsp;
-<img src="/{face}.png" alt="gotchi" id="face" class="automaticResize" />
 
 <style>
 	#face {
