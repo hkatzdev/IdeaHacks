@@ -25,8 +25,12 @@ const int POWER_HYGRO_1 = 2;
 const int POWER_HYGRO_2 = 3;
 const int POWER_HYGRO_3 = 4;
 
-float temperature;
-int moisture;
+float temperature1;
+int moisture1;
+float temperature2;
+int moisture2;
+float temperature3;
+int moisture3;
 
 Adafruit_MCP9808 tempsensor = Adafruit_MCP9808();
 
@@ -101,39 +105,44 @@ void setup() {
 
 void loop() {
   // Read L1
-  temperature = readTemperature(0x18);
-  moisture = readMoisture(A0);
-  displayLevel(moisture, temperature, 1);
+  temperature1 = readTemperature(0x18);
+  moisture1 = readMoisture(A0);
+  displayLevel(moisture1, temperature1, 1);
 
-  // Send L1 to Firebase
-  sendToFirebase("temperature", temperature);
-  sendToFirebase("moisture", moisture);
-
-  delay(5000); // Send data every 5 seconds
+  delay(2000); // Send data every 5 seconds
 
   lcd.clear();
 
   // Read L2
-  temperature = readTemperature(0x19);
-  moisture = readMoisture(A1);
-  displayLevel(moisture, temperature, 1);
+  temperature2 = readTemperature(0x19);
+  moisture2 = readMoisture(A1);
+  displayLevel(moisture2, temperature2, 2);
 
-  // Send L2 to Firebase
-  sendToFirebase("temperature", temperature);
-  sendToFirebase("moisture", moisture);
+  delay(2000); // Send data every 5 seconds
 
-  delay(5000); // Send data every 5 seconds
+  lcd.clear();
 
   // Read L3
-  temperature = readTemperature(0x1A);
-  moisture = readMoisture(A2);
-  displayLevel(moisture, temperature, 1);
+  temperature3 = readTemperature(0x1A);
+  moisture3 = readMoisture(A2);
+  displayLevel(moisture3, temperature3, 3);
+
+  // Send L1 to Firebase
+  sendToFirebase("temperature1", temperature1);
+  sendToFirebase("moisture1", moisture1);
+
+  // Send L2 to Firebase
+  sendToFirebase("temperature2", temperature2);
+  sendToFirebase("moisture2", moisture2);
 
   // Send L3 to Firebase
-  sendToFirebase("temperature", temperature);
-  sendToFirebase("moisture", moisture);
+  sendToFirebase("temperature3", temperature3);
+  sendToFirebase("moisture3", moisture3);
 
-  delay(5000); // Send data every 5 seconds
+  delay(2000); // Send data every 5 seconds
+
+  lcd.clear();
+
 }
 
 void displayLevel(int moisture, int temper_F, int level){
