@@ -1,21 +1,16 @@
-&nbsp;<br />&nbsp;
+
+
 <header>
 	<img src="/trash.png" alt="Logo" id="logo" class="automaticResize" />
-</header>
+</header>		
 <main>
 	<slot />
 </main>
 <footer>
 	<nav>
-		<button
-			on:click={() => {
-				alert('This project was made by the Pierce Team :)');
-			}}>Who made this?</button
-		>
+		<button on:click={() => {alert("This project was made by the Pierce Team :)")}}>Who made this?</button>
 	</nav>
 </footer>
-&nbsp;
-<br />&nbsp;
 
 <style>
 	@import '$lib/styles/automaticResize';

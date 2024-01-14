@@ -1,24 +1,12 @@
-<script context="module">
-	import { getFirebaseApp, getFirebaseInfo } from '$lib/firebase.js';
-	import { GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
-	/**
-	 * @param {{ credential: string; }} response
-	 */
-	const app = getFirebaseApp();
-	const { auth } = getFirebaseInfo(app);
-	/**
-	 * @param {{ credential: string; }} response
-	 */
-	export function handleCredentialResponse(response) {
-		const idToken = response.credential;
-		const credential = GoogleAuthProvider.credential(idToken);
-		signInWithCredential(auth, credential);
-	}
+<script>
+
+	import { browser } from "$app/environment";
+
 </script>
 
-<svelte:head>
-	<script src="https://accounts.google.com/gsi/client" async></script>
-</svelte:head>
+{#if browser}
+<script src="https://accounts.google.com/gsi/client" async></script>
+{/if}
 <div
 	id="g_id_onload"
 	data-client_id="407146302691-3h6dv8f44d38sr40pn3i3ql3s2164b16.apps.googleusercontent.com"
@@ -37,6 +25,3 @@
 	data-size="large"
 	data-logo_alignment="left"
 ></div>
-
-<style>
-</style>
