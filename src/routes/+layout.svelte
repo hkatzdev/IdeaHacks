@@ -15,7 +15,7 @@
 
 <header>
 	<CenteredImages {images} />
-</header>
+</header>		
 <main>
 	<slot />
 </main>
